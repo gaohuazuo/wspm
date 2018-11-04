@@ -2,27 +2,48 @@
 
 # Requirements
 
-Python 3.5+ and websockets library, available via `pip install websockets`.
+Python 3.5+
+
+# Install
+
+1. Clone the repository
+
+    ```sh
+    git clone https://github.com/gaohuazuo/wspm.git
+    cd wspm
+    ```
+
+1. (Optional) Create a virtualenv and activate
+
+    ```sh
+    virtualenv pyenv --python=python3
+    . pyenv/bin/activate
+    ```
+
+2. Install with `pip`
+
+    ```sh
+    pip install -e .
+    ```
 
 # Example
 
-On both client and server side, clone the repository and cd to it.
+On server side, suppose you want to expose the ssh port (22) to clients,
 
 ```sh
-git clone https://github.com/gaohuazuo/wspm
-cd wspm
-```
-
-On server side, suppose you want to expose `127.0.0.1:1080` to clients,
-
-```sh
-./server.py :80 localhost:1080
+python3 -m wspm.server :80 localhost:22
 ```
 
 On client side,
 
 ```sh
-./client.py localhost:1080 ws://yourserver.com
+python3 -m wspm.client localhost:2222 ws://example.com:80
+```
+
+Now the port mapping has been set up. Test it with
+
+```sh
+ssh -p 2222 username@localhost -v
 ```
 
 # WSS
