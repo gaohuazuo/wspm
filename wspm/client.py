@@ -5,7 +5,7 @@ import argparse
 
 import websockets
 
-from common import forward
+from .common import forward
 
 
 def handler(url, t, s):
